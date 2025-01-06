@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Inline Modal</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-button expand="block" (click)="setOpen(true)">Open</ion-button>
+  <ion-modal [isOpen]="isModalOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Modal</ion-title>
+          <ion-buttons slot="end">
+            <!-- Camera Icon -->
+            <ion-button (click)="openGallery()">
+              <ion-icon name="camera-outline"></ion-icon>
+            </ion-button>
+            <!-- Close Button -->
+            <ion-button (click)="setOpen(false)">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <div *ngIf="selectedImages.length > 0">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="4" *ngFor="let image of selectedImages; let i = index">
+                <div class="image-container">
+                  <!-- Image with Cross Icon -->
+                  <ion-icon
+                    name="close-circle"
+                    class="remove-icon"
+                    (click)="removeImage(i)"
+                  ></ion-icon>
+                  <ion-img [src]="image"></ion-img>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </ion-content>
+      <!-- Description Box -->
+      <ion-item>
+        <ion-textarea placeholder="Add a description..." [(ngModel)]="description"></ion-textarea>
+      </ion-item>
+      <!-- Share Button -->
+      <ion-button expand="block" (click)="sharePdf()">
+        <ion-icon slot="start" name="share-outline"></ion-icon>
+        Share
+      </ion-button>
+    </ng-template>
+  </ion-modal>
+</ion-content>

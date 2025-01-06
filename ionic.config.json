@@ -1,0 +1,7 @@
+{
+  "name": "Task1",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

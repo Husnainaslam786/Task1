@@ -1,0 +1,14 @@
+.image-container {
+    position: relative;
+  }
+  
+  .remove-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: red;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10;
+  }
+  

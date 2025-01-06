@@ -1,0 +1,38 @@
+
+<div class="container">
+  <h2>Reactive Form Example</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input id="name" formControlName="name" type="text" class="form-control" />
+      <div *ngIf="form.get('name')?.touched && form.get('name')?.invalid" class="text-danger">
+        Name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="fatherName">Father's Name:</label>
+      <input id="fatherName" formControlName="fatherName" type="text" class="form-control" />
+      <div *ngIf="form.get('fatherName')?.touched && form.get('fatherName')?.invalid" class="text-danger">
+        Father's name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="image">Select Image:</label>
+      <input id="image" formControlName="image" type="file" (change)="onImageChange($event)" class="form-control" />
+      <div *ngIf="form.get('image')?.touched && form.get('image')?.invalid" class="text-danger">
+        Image is required.
+      </div>
+    </div>
+
+    <div *ngIf="imagePreview">
+      <h5>Image Preview:</h5>
+      <img [src]="imagePreview" alt="Image Preview" width="100" height="100" />
+    </div>
+
+    <button type="submit" [disabled]="form.invalid || submitting" class="btn btn-primary">
+      {{ submitting ? 'Submitting...' : 'Submit' }}
+    </button>
+  </form>
+</div>
